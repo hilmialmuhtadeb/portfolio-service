@@ -6,7 +6,8 @@ const addNewAchievment = (req, res, next) => {
   const newAchievment = new Achievment({
     title: body.title,
     description: body.description,
-    date: body.date
+    date: body.date,
+    isAcademichal: body.isAcademichal
   })
 
   newAchievment.save()
@@ -17,7 +18,7 @@ const addNewAchievment = (req, res, next) => {
         data: result
       })
     })
-    .catch(err => {
+    .catch(() => {
       res.status(400).json({
         status: res.statusCode,
         message: 'failed to add new achievment.'
